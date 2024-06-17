@@ -12,6 +12,10 @@
           <p class="text-xl my-7">Price - ${{ product.price }}</p> <!-- The price has a font size of xl and a margin of 7 pixels on the top and bottom. -->
           <h3 class="font-bold border-b-2 mb-4 pb-2">Product description:</h3> <!-- The heading has a font weight of bold, a bottom border, and a margin and padding on the bottom. -->
           <p class="mb-7">{{ product.description }}</p> <!-- The description has a margin on the bottom. -->
+          <button class="btn flex">
+            <i class="material-icons mr-2">add_shopping_cart</i>
+            <span>Add to cart</span>
+          </button>
         </div>
       </div>
     </div>

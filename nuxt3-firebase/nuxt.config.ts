@@ -1,8 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-   /* For later usage - Not fully configured yet - Do not use
-   
-   runtimeConfig: {
+  runtimeConfig: {
     public: {
       firebase: {
         apiKey: process.env.FIREBASE_API_KEY,
@@ -13,6 +11,6 @@ export default defineNuxtConfig({
         appId: process.env.FIREBASE_APP_ID,
       },
     },
-  }, */
+  },
   devtools: { enabled: true }
 })

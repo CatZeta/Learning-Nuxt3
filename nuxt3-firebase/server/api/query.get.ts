@@ -1,14 +1,12 @@
-import {add} from '../../lib/firestore';
+import { getQuery } from "h3";
+import { queryByCollection } from "../lib/firestore";
 
 export default defineEventHandler(async (event) => {
-    try{
-        const query = getQuery(event.req)
-        const body = await readBody(event.req)
-
-        const docRef = await add(query.col as string, body);
-
-        return{result: docRef};
-    }catch(error){
-        return{error: error.message}
-    }
-})
+  try {
+    const query = getQuery(event);
+    const docs = await queryByCollection(query.col as string);
+    return { result: docs };
+  } catch (error :any) {
+    return { result: [], error: error.message };
+  } 
+});

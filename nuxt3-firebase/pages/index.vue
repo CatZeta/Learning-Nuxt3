@@ -1,4 +1,6 @@
 <script setup>
+import InputText from 'primevue/inputtext';
+
   const product = ref()
   
 
@@ -11,8 +13,12 @@
 </script>
 
 <template>
+  <div v-for="p in product" :key="p.id">
+    Product: {{p.name}}
+  </div>
   <div>
-    Page: {{product}}
+    <InputText />
+    <Button label="Check" icon="pi pi-check" />
   </div>
 </template>
 

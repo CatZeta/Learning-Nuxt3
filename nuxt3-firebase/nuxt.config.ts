@@ -1,5 +1,10 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+// nuxt.config.ts
 export default defineNuxtConfig({
+  css: [
+    'primevue/resources/themes/saga-blue/theme.css',
+    'primevue/resources/primevue.min.css',
+    'primeicons/primeicons.css'
+  ],
   runtimeConfig: {
     public: {
       firebase: {
@@ -12,5 +17,8 @@ export default defineNuxtConfig({
       },
     },
   },
-  devtools: { enabled: true }
-})
+  devtools: { enabled: true },
+  build: {
+    transpile: ['primevue']
+  }
+});

@@ -24,21 +24,27 @@ export const signInUser = async (email, password) => {
 
 export const initUser = async () => {
   const auth = getAuth();
+  const firebaseUser = useFirebaseUser();
+
+  firebaseUser.value = auth.currentUser;
+  console.log('Init user', firebaseUser);
+
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      const uid = user.uid
-
-      console.log('user', user);
+      console.log('Auth state changed', user);
     } else {
-      console.log('User is signed out');
+      //If signed out
+      console.log('Auth state changed', user);
     }
+
+    firebaseUser.value = user;
   });
 };
 
 export const signOutUser = async () => {
   const auth = getAuth();
   try {
-    const result =await auth.signOut();
+    const result = await auth.signOut();
     console.log('User signed out:', result);
   } catch (error) {
     console.error('Error signing out user:', error.code, error.message);

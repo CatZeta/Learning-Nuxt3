@@ -27,7 +27,7 @@ export const initUser = async () => {
   const firebaseUser = useFirebaseUser();
 
   firebaseUser.value = auth.currentUser;
-  console.log('Init user', firebaseUser);
+  /* console.log('Init user', firebaseUser); */
 
   onAuthStateChanged(auth, (user) => {
     if (user) {

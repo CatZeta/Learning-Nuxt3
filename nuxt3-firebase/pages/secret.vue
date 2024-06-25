@@ -1,5 +1,5 @@
 <template>
-    <div class="text-3x1 font-bold underline">
+    <div class="text-3xl font-bold underline">
         Secret
     </div>
 </template>

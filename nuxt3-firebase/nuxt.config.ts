@@ -10,6 +10,9 @@ export default defineNuxtConfig({
     '@nuxt/postcss8',
     // Other build modules...
   ],
+  modules: [
+    '@vueuse/nuxt',
+  ],
   runtimeConfig: {
     public: {
       firebase: {
@@ -35,4 +38,5 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  darkMode: 'class',
 });

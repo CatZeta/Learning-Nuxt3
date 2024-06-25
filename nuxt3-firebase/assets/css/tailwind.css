@@ -1,3 +1,41 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.card-base {
+    @apply w-96 p-5 shadow-lg rounded-lg;
+  }
+  
+  .card-dark {
+    @apply dark:bg-gray-600 dark:text-gray-300;
+  }
+  
+  .input-base {
+    @apply border rounded-md px-3 py-2 mb-4 w-full;
+  }
+  
+  .input-dark {
+    @apply dark:bg-gray-500 dark:placeholder-gray-200 dark:text-gray-200;
+  }
+  
+  .button-base {
+    @apply p-2 shadow-lg transition-colors duration-300 mb-2;
+  }
+  
+  .button-primary {
+    @apply bg-blue-500 text-white hover:bg-blue-600;
+  }
+  
+  .button-primary-dark {
+    @apply dark:bg-blue-300 dark:text-gray-600 dark:hover:bg-blue-200;
+  }
+  
+  .button-danger {
+    @apply bg-red-500 text-white hover:bg-red-600;
+  }
+
+  .form-required {
+    @apply after:content-['*'] after:text-red-400;
+  }
+  

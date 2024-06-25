@@ -1,9 +1,14 @@
 // nuxt.config.ts
 export default defineNuxtConfig({
   css: [
+    '@/assets/css/tailwind.css',
     'primevue/resources/themes/saga-blue/theme.css',
     'primevue/resources/primevue.min.css',
     'primeicons/primeicons.css'
+  ],
+  buildModules: [
+    '@nuxt/postcss8',
+    // Other build modules...
   ],
   runtimeConfig: {
     public: {
@@ -17,8 +22,17 @@ export default defineNuxtConfig({
       },
     },
   },
+  plugins: [
+    '@/plugins/primevue.js' // PrimeVue plugin
+  ],
   devtools: { enabled: true },
   build: {
     transpile: ['primevue']
-  }
+  },
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
 });

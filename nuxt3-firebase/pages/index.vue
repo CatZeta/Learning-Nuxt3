@@ -1,7 +1,8 @@
 <template>
- 
+ <div v-if="firebaseUser" class="text-3x1 font-bold underline">Welcome, {{ firebaseUser?.email }}</div>
   <AuthForm /> 
-  <div v-if="firebaseUser">Welcome, {{ firebaseUser?.email }}</div>
+  
+  <nuxtLink to="/secret">Go to secret</nuxtLink>
 
 </template>
 

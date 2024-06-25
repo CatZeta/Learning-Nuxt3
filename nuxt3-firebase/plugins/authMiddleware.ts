@@ -8,7 +8,8 @@ export default defineNuxtPlugin(() => {
     const { $auth } = useNuxtApp();
     console.log("$auth", $auth);
 
-    //Route Guard - middleware
+    //Auth route guards
+    //TODO fix ts error
     if (!$auth?.currentUser?.uid) {
       return abortNavigation();
     }

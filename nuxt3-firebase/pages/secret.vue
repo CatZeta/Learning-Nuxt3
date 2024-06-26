@@ -1,7 +1,7 @@
 <template>
-    <div class="text-3xl font-bold underline">
-        Secret
-    </div>
+      <div v-for="p in product" :key="p.id">
+    Product: {{p.name}}
+  </div>
 </template>
 
 <script setup>
@@ -9,8 +9,16 @@ definePageMeta({
   middleware: ["auth"]
   // or middleware: 'auth'
 })
+
+
+   const product = ref()
+
+
+  onMounted(async () => {
+    const { result } = await $fetch('/api/query?col=product')
+    product.value = result
+
+    console.log('Result', result) 
+  })
 </script>
 
-<style lang="scss" scoped>
-
-</style>

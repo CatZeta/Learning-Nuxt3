@@ -10,7 +10,9 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "dotenv": "^16.4.5",
     "firebase": "^10.12.2",
+    "firebase-admin": "^12.2.0",
     "nuxt": "^3.12.2",
     "primeicons": "^7.0.0",
     "primevue": "^3.52.0",

@@ -26,7 +26,7 @@ export default defineNuxtConfig({
     },
   },
   plugins: [
-    '@/plugins/primevue.js' // PrimeVue plugin
+    '~/plugins/primevue.js' // PrimeVue plugin
   ],
   devtools: { enabled: true },
   build: {
@@ -38,5 +38,4 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-  darkMode: 'class',
 });

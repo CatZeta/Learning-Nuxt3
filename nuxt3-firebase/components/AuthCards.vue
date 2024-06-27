@@ -7,7 +7,7 @@
 <template>
   <div class="flex flex-col items-center justify-center min-h-screen">
 
-    <!-- Card create account -->
+    <!-- Auth Card -->
     <Card v-if="!firebaseUser" class="card-base border border-slate-500 card-dark mt-4">
 
       <!-- Header -->
@@ -64,7 +64,6 @@
 
 <script setup>
   import { useToast } from "primevue/usetoast";
-  // Importe useFirebaseUser e outras funções necessárias
 
   const toast = useToast();
   const firebaseUser = useFirebaseUser();
@@ -84,14 +83,17 @@
     remember.value = false;
   };
 
-  // Função para adicionar uma mensagem de toast
+  // Função para adicionar mensagem toast
   const showToast = (severity, summary, detail) => {
     toast.add({ severity, summary, detail, life: 3000 });
   };
 
+    
+
   const signIn = async () => {
     try {
       const credentials = await signInUser(email.value, password.value);
+      
       if (credentials && credentials.user) {
         firebaseUser.value = credentials.user;
         error.value = null;

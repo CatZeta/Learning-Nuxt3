@@ -14,8 +14,6 @@
 
     <nuxtLink to="/secret">Go to secret</nuxtLink>
   </div>
-
-
 </template>
 
 <script setup>

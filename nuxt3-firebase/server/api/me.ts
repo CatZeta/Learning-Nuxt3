@@ -2,9 +2,5 @@
 import { getCookie } from 'h3'  
 export default defineEventHandler(event => {
     // Read cookie
-    let cookie = getCookie(event, 'cookie')
-
-  
-    // Send JSON response
-    return { cookie }
+    return { name:  'eu de novo', ...event.context.user }
   })

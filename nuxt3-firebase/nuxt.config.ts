@@ -1,18 +1,27 @@
 // nuxt.config.ts
 export default defineNuxtConfig({
+  build: {
+    transpile: ['primevue']
+  },
   css: [
     '@/assets/css/tailwind.css',
     'primevue/resources/themes/saga-blue/theme.css',
     'primevue/resources/primevue.min.css',
     'primeicons/primeicons.css'
   ],
-  buildModules: [
-    '@nuxt/postcss8',
-    // Other build modules...
-  ],
+  devtools: { enabled: true },
   modules: [
     '@vueuse/nuxt',
   ],
+  plugins: [
+    '~/plugins/primevue.js' // PrimeVue plugin
+  ],
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
   runtimeConfig: {
     public: {
       firebase: {
@@ -24,18 +33,5 @@ export default defineNuxtConfig({
         appId: process.env.FIREBASE_APP_ID,
       },
     },
-  },
-  plugins: [
-    '~/plugins/primevue.js' // PrimeVue plugin
-  ],
-  devtools: { enabled: true },
-  build: {
-    transpile: ['primevue']
-  },
-  postcss: {
-    plugins: {
-      tailwindcss: {},
-      autoprefixer: {},
-    },
-  },
+  }
 });

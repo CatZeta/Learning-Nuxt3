@@ -65,7 +65,7 @@ import {
    * @param {string} id - The ID of the document to delete.
    * @returns {Promise<void>} A promise that resolves when the document is deleted.
    */
-  export const del = async (col, id) => {
+  export const del = async (col: string, id: string) => {
     // Get a reference to the document
     const docRef = doc(firestoreDb, col, id);
 

@@ -1,14 +1,26 @@
-import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { useCookie } from "#app";
+
+import {useCookie} from "#app";
+import {doc, getFirestore, setDoc} from "firebase/firestore";
+import {getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile} from "firebase/auth";
 
 // Function to create a new user
 export const createUser = async (email, password, displayName) => {
   const auth = getAuth();
+  const db = getFirestore();
   try {
     const credentials = await createUserWithEmailAndPassword(auth, email, password);
     if (credentials.user) {
       await updateProfile(credentials.user, { displayName }); // Update the user's profile with the display name
       credentials.user.displayName = displayName; // Update the local firebaseUser object with displayName
+
+      const user = credentials.user;
+      await setDoc(doc(db, 'users', user.uid), {
+        displayName: user.displayName,
+        email: user.email,
+        createdAt: new Date()
+      });
+
+      console.log('User created:', user);
     }
     return credentials;
   } catch (error) {
@@ -21,8 +33,7 @@ export const createUser = async (email, password, displayName) => {
 export const signInUser = async (email, password) => {
   const auth = getAuth();
   try {
-    const credentials = await signInWithEmailAndPassword(auth, email, password);
-    return credentials;
+    return await signInWithEmailAndPassword(auth, email, password);
   } catch (error) {
     console.error('Error signing in user:', error.code, error.message);
     return null;
@@ -37,13 +48,14 @@ export const initUser = async () => {
   // Set the initial value of firebaseUser
   firebaseUser.value = auth.currentUser;
 
-  const cookie = useCookie('cookie'); 
+  const cookie = useCookie('cookie');
 
   // Listen for changes in authentication state
   onAuthStateChanged(auth, (user) => {
     if (user) {
       console.log('Auth state changed', user);
     } else {
+
       // User is signed out
       console.log('Auth state changed', user);
     }

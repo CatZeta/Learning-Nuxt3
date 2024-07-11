@@ -1,0 +1,1 @@
+export { default } from "file:///C:/Users/catar/Documents/$Learn/Nuxt3/auraTest.v5/node_modules/@nuxt/vite-builder/dist/runtime/vite-node.mjs"
